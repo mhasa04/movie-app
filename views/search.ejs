@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Movies</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Search Movies</h1>
+    <%- include('partials/navbar') %>
+    <form method="GET" action="/search">
+        <input type="text" name="query" placeholder="Search for movies..." required>
+        <button type="submit">Search</button>
+    </form>
+
+    <% if (error) { %>
+        <p style="color: red;"><%= error %></p>
+    <% } %>
+
+    <% if (movies && movies.length > 0) { %>
+        <ul>
+            <% movies.forEach(movie => { %>
+                <li><%= movie.title %> (<%= movie.release_date %>)</li>
+            <% }) %>
+        </ul>
+    <% } %>
+</body>
+</html>

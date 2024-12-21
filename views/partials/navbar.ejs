@@ -1,0 +1,14 @@
+<nav>
+  <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/search">Search Movies</a></li>
+      <% if (!session?.user) { %>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/register">Register</a></li>
+      <% } else { %>
+          <li><a href="/logout">Logout</a></li>
+          <li>Welcome, <%= session.user.username %>!</li>
+      <% } %>
+  </ul>
+</nav>
