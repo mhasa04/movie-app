@@ -63,7 +63,7 @@ app.get('/search', async (req, res) => {
       console.log('API Response:', response.data); 
       res.render('search', { movies: response.data.results, error: null });
   } catch (error) {
-      console.error('API Error:', error.response?.data || error.message); 
+      console.error('API Error:', error.response && error.response.data ? error.response.data : error.message); 
       res.render('search', { movies: [], error: 'Error fetching data from API' });
   }
 });
